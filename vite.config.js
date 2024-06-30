@@ -13,5 +13,5 @@ export default defineConfig({
     setupFiles: "src/setupTests",
     mockReset: true,
   },
-  base: "/aston-react",
+  base: process.env.VITE_BASE_PATH || "/aston-react",
 })
