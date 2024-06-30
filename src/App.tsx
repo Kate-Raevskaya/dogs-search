@@ -1,38 +1,39 @@
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom"
+
 import "./App.css"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <></>,
+    element: <Outlet></Outlet>,
     children: [
       {
         index: true,
-        element: <></>,
+        element: <p>home</p>,
       },
       {
         path: "signin",
-        element: <></>,
+        element: <p>signin</p>,
       },
       {
         path: "signup",
-        element: <></>,
+        element: <p>signup</p>,
       },
       {
         path: "dogs/:id",
-        element: <></>,
+        element: <p>dogs</p>,
       },
       {
         path: "search",
-        element: <></>,
+        element: <p>search</p>,
       },
       {
         path: "history",
-        element: <></>,
+        element: <p>history</p>,
       },
       {
         path: "favorites",
-        element: <></>,
+        element: <p>favorites</p>,
       },
     ],
   },
