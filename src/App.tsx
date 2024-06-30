@@ -7,7 +7,8 @@ const router = createBrowserRouter([
     element: <></>,
     children: [
       {
-        index: true, element: <></>
+        index: true,
+        element: <></>,
       },
       {
         path: "signin",
@@ -33,14 +34,12 @@ const router = createBrowserRouter([
         path: "favorites",
         element: <></>,
       },
-    ]
-  }
+    ],
+  },
 ])
 
 const App = () => {
-  return (
-    <RouterProvider router={router}/>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
