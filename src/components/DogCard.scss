@@ -1,0 +1,18 @@
+.dog-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  box-shadow: 0 0 5px rgb(100, 100, 100);
+  border-radius: 5px;
+
+  .dog-card-image {
+    height: 270px;
+    width: 330px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
