@@ -4,7 +4,12 @@ import { useNavigate, useParams } from "react-router-dom"
 import type { DogDescription, DogImage } from "../../types/dog-types"
 import "./DogPage.scss"
 
-async function getDogDescription(id): Promise<DogDescription> {
+async function getDogDescription(
+  id: string | undefined,
+): Promise<DogDescription> {
+  if (id === undefined) {
+    throw new Error("id is required")
+  }
   let response = await fetch(`https://api.thedogapi.com/v1/breeds/${id}`, {
     headers: {
       "x-api-key": import.meta.env.VITE_DOG_API_KEY,
@@ -18,7 +23,7 @@ async function getDogDescription(id): Promise<DogDescription> {
   }
 }
 
-async function getDogImages(id): Promise<DogImage[]> {
+async function getDogImages(id: number): Promise<DogImage[]> {
   let response = await fetch(
     `https://api.thedogapi.com/v1/images/search?limit=3&breed_ids=${id}`,
     {
@@ -36,8 +41,8 @@ async function getDogImages(id): Promise<DogImage[]> {
 }
 
 export const DogPage = () => {
-  let [dogsImages, setDogsImages] = useState([])
-  let [dog, setDog] = useState<DogDescription>(null)
+  let [dogsImages, setDogsImages] = useState<DogImage[]>([])
+  let [dog, setDog] = useState<DogDescription | null>(null)
   let { id } = useParams()
   let navigate = useNavigate()
 
