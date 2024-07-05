@@ -35,7 +35,7 @@ export const BreedsContainer = () => {
   return (
     <div className="all-breeds">
       {dogs.map(dog => (
-        <DogCard key={dog.id} url={dog.url} breed={dog.breed} />
+        <DogCard key={dog.id} id={dog.id} url={dog.url} breed={dog.breed} />
       ))}
     </div>
   )

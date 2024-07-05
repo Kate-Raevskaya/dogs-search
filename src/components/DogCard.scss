@@ -6,6 +6,11 @@
   box-shadow: 0 0 5px rgb(100, 100, 100);
   border-radius: 5px;
 
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(100, 100, 100);
+  }
+
   .dog-card-image {
     height: 270px;
     width: 330px;
