@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 
 import App from "../App"
+import { DogPage } from "../pages/DogPage/DogPage"
 import { Home } from "../pages/home/Home"
 
 export const router = createBrowserRouter([
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "dogs/:id",
-        element: <p>dogs</p>,
+        element: <DogPage />,
       },
       {
         path: "search",

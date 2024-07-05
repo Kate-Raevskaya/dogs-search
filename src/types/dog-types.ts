@@ -9,3 +9,19 @@ export type Dog = {
   id: number
   url: string
 }
+
+export type DogDescription = {
+  bred_for: string
+  height: { metric: string }
+  id: number
+  life_span: string
+  name: string
+  origin: string
+  temperament: string
+  weight: { metric: string }
+}
+
+export type DogImage = {
+  id: string
+  url: string
+}
