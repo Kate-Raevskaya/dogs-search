@@ -1,7 +1,7 @@
 export type ApiDog = {
   name: string
   id: number
-  image: { url: string }
+  image?: { url: string }
 }
 
 export type Dog = {
