@@ -1,0 +1,18 @@
+.search-form {
+  width: fit-content;
+
+  .suggestions {
+    display: none;
+    position: absolute;
+    background-color: antiquewhite;
+    max-height: 350px;
+    overflow-y: scroll;
+
+    &.suggestions-focus {
+      display: block;
+    }
+    ul {
+      padding: 0;
+    }
+  }
+}
