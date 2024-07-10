@@ -1,9 +1,12 @@
 import { createBrowserRouter } from "react-router-dom"
 
 import App from "../App"
+import { PrivateRoute } from "../components/PrivateRoute"
 import { DogPage } from "../pages/dog-page/DogPage"
 import { Home } from "../pages/home/Home"
 import { SearchPage } from "../pages/search/SearchPage"
+import { SigninPage } from "../pages/signin/SigninPage"
+import { SignupPage } from "../pages/singup/SignupPage"
 
 export const router = createBrowserRouter([
   {
@@ -16,11 +19,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "signin",
-        element: <p>signin</p>,
+        element: <SigninPage />,
       },
       {
         path: "signup",
-        element: <p>signup</p>,
+        element: <SignupPage />,
       },
       {
         path: "dogs/:id",
@@ -32,11 +35,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "history",
-        element: <p>history</p>,
+        element: (
+          <PrivateRoute>
+            <p>history</p>
+          </PrivateRoute>
+        ),
       },
       {
         path: "favorites",
-        element: <p>favorites</p>,
+        element: (
+          <PrivateRoute>
+            <p>favorites</p>
+          </PrivateRoute>
+        ),
       },
     ],
   },

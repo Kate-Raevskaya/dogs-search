@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom"
 
 import "./index.css"
 import { router } from "./router/router"
+import { store } from "./store/store"
 
 const container = document.getElementById("root")
 
@@ -13,7 +14,9 @@ if (container) {
 
   root.render(
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </React.StrictMode>,
   )
 } else {
