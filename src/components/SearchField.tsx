@@ -69,7 +69,7 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
           value={inputValue}
           onChange={handleOnChangeInput}
           onFocus={handleOnFocusInput}
-        ></input>
+        />
         <button type="submit">Search</button>
         <div
           className={

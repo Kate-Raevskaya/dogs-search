@@ -40,7 +40,7 @@ export const AuthForm = ({
             onChange={e => setEmail(e.target.value)}
             type="email"
             required
-          ></input>
+          />
           Email
         </label>
         <label>
@@ -50,7 +50,7 @@ export const AuthForm = ({
             type="password"
             minLength={8}
             required
-          ></input>
+          />
           Password
         </label>
         <button className="auth-button" type="submit">
