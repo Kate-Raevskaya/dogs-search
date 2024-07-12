@@ -20,4 +20,14 @@
       width: 100%;
     }
   }
+
+  .dog-card-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .save-button {
+      border: lightsalmon 2px solid;
+    }
+  }
 }

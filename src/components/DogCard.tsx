@@ -8,6 +8,8 @@ type Props = {
   breed: string
 }
 
+function handleSaveClick() {}
+
 export const DogCard = ({ id, url, breed }: Props) => {
   let navigate = useNavigate()
   return (
@@ -15,8 +17,12 @@ export const DogCard = ({ id, url, breed }: Props) => {
       <div className="dog-card-image">
         <img alt="dog" src={url}></img>
       </div>
-      <h3>{breed}</h3>
-      <div className="save-button"></div>
+      <div className="dog-card-details">
+        <h3>{breed}</h3>
+        <div className="save-button" onClick={handleSaveClick}>
+          Save&#x2764;&#xfe0f;
+        </div>
+      </div>
     </div>
   )
 }
