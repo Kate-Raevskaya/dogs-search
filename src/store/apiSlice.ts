@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 import { transformDogApiData } from "../helpers/data-transform"
-import type { ApiDog, Dog, DogDescription, DogImage } from "../types/dog-types"
+import type { Dog, DogDescription, DogImage } from "../types/dog-types"
 
 export const apiSlice = createApi({
   reducerPath: "dog",
@@ -12,9 +12,7 @@ export const apiSlice = createApi({
         url: "/breeds",
         headers: { "x-api-key": import.meta.env.VITE_DOG_API_KEY },
       }),
-      transformResponse: (dogs: ApiDog[]) => {
-        return transformDogApiData(dogs)
-      },
+      transformResponse: transformDogApiData,
     }),
     getDogById: builder.query<DogDescription, string | undefined>({
       query: id => ({
@@ -33,9 +31,7 @@ export const apiSlice = createApi({
         url: `/breeds/search?q=${breedQuery}`,
         headers: { "x-api-key": import.meta.env.VITE_DOG_API_KEY },
       }),
-      transformResponse: (dogs: ApiDog[]) => {
-        return transformDogApiData(dogs)
-      },
+      transformResponse: transformDogApiData,
     }),
   }),
 })
