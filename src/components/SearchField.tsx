@@ -2,9 +2,8 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { NavLink } from "react-router-dom"
 
-import { getBreedByQuery } from "../api/dog-api"
 import { useDebounce } from "../hooks/useDebounce"
-import type { ApiDog } from "../types/dog-types"
+import { useGetDogsByBreedQuery } from "../store/apiSlice"
 import "./SearchField.scss"
 
 type Props = {
@@ -14,11 +13,12 @@ type Props = {
 
 export const SearchField = ({ onSubmit, initialValue }: Props) => {
   let [inputValue, setInputValue] = useState(initialValue)
-  let [suggestions, setSuggestions] = useState<ApiDog[]>([])
   let [focus, setFocus] = useState<boolean>(false)
 
   let formRef = useRef<HTMLFormElement>(null)
   let debouncedValue = useDebounce(inputValue, 300)
+
+  let { data: suggestions = [] } = useGetDogsByBreedQuery(debouncedValue)
 
   function handleSubmitInput(e: React.FormEvent) {
     e.preventDefault()
@@ -52,14 +52,6 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
     }
   })
 
-  useEffect(() => {
-    if (debouncedValue !== undefined) {
-      getBreedByQuery(debouncedValue).then(dogArray => {
-        setSuggestions(dogArray)
-      })
-    }
-  }, [debouncedValue])
-
   return (
     <div className="search-container">
       <form className="search-form" onSubmit={handleSubmitInput} ref={formRef}>
@@ -85,7 +77,7 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
                 {suggestions.map(s => {
                   return (
                     <li key={s.id}>
-                      <NavLink to={`../dogs/${s.id}`}>{s.name}</NavLink>
+                      <NavLink to={`../dogs/${s.id}`}>{s.breed}</NavLink>
                     </li>
                   )
                 })}

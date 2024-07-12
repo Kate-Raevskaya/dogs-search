@@ -1,75 +1,33 @@
-import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-import type { DogDescription, DogImage } from "../../types/dog-types"
+import {
+  useGetDogByIdQuery,
+  useGetDogImagesByIdQuery,
+} from "../../store/apiSlice"
 import "./DogPage.scss"
 
-async function getDogDescription(
-  id: string | undefined,
-): Promise<DogDescription> {
-  if (id === undefined) {
-    throw new Error("id is required")
-  }
-  let response = await fetch(`https://api.thedogapi.com/v1/breeds/${id}`, {
-    headers: {
-      "x-api-key": import.meta.env.VITE_DOG_API_KEY,
-    },
-  })
-
-  if (response.ok) {
-    return await response.json()
-  } else {
-    throw new Error("Something went wrong!")
-  }
-}
-
-async function getDogImages(id: number): Promise<DogImage[]> {
-  let response = await fetch(
-    `https://api.thedogapi.com/v1/images/search?limit=3&breed_ids=${id}`,
-    {
-      headers: {
-        "x-api-key": import.meta.env.VITE_DOG_API_KEY,
-      },
-    },
-  )
-
-  if (response.ok) {
-    return await response.json()
-  } else {
-    throw new Error("Something went wrong!")
-  }
-}
-
 export const DogPage = () => {
-  let [dogsImages, setDogsImages] = useState<DogImage[]>([])
-  let [dog, setDog] = useState<DogDescription | null>(null)
   let { id } = useParams()
+  let { data: dog, isLoading } = useGetDogByIdQuery(id)
+  let { data: dogImages = [], isLoading: imagesIsLoading } =
+    useGetDogImagesByIdQuery(id)
+
   let navigate = useNavigate()
 
-  useEffect(() => {
-    getDogDescription(id).then(dog => {
-      setDog(dog)
+  let images = imagesIsLoading ? (
+    <div className="dog-image-loading">Images are loading...</div>
+  ) : (
+    dogImages.map(image => {
+      return (
+        <div key={image.id} className="dog-image">
+          <img alt="dog" src={image.url}></img>
+        </div>
+      )
     })
-  }, [id])
+  )
 
-  useEffect(() => {
-    if (dog) {
-      getDogImages(dog.id).then(imageArray => {
-        setDogsImages(imageArray)
-      })
-    }
-  }, [dog])
-
-  let images = dogsImages.map(image => {
-    return (
-      <div key={image.id} className="dog-image">
-        <img alt="dog" src={image.url}></img>
-      </div>
-    )
-  })
-
-  if (!dog) {
-    return <div className="dog-card-loading">Card is loading</div>
+  if (!dog || isLoading) {
+    return <div className="dog-card-loading">Card is loading...</div>
   }
 
   return (
