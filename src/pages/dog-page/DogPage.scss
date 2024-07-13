@@ -21,4 +21,15 @@
       }
     }
   }
+  .save-button {
+    border: lightsalmon 2px solid;
+    width: fit-content;
+    margin: auto;
+    font-size: 25px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lightsalmon;
+    }
+  }
 }

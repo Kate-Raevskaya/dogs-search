@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 import App from "../App"
 import { PrivateRoute } from "../components/PrivateRoute"
 import { DogPage } from "../pages/dog-page/DogPage"
+import { FavoritesPage } from "../pages/favorites/FavoritesPage"
 import { Home } from "../pages/home/Home"
 import { SearchPage } from "../pages/search/SearchPage"
 import { SigninPage } from "../pages/signin/SigninPage"
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
         element: <SignupPage />,
       },
       {
-        path: "dogs/:id",
+        path: "dogs/:idParam",
         element: <DogPage />,
       },
       {
@@ -45,7 +46,7 @@ export const router = createBrowserRouter([
         path: "favorites",
         element: (
           <PrivateRoute>
-            <p>favorites</p>
+            <FavoritesPage />
           </PrivateRoute>
         ),
       },

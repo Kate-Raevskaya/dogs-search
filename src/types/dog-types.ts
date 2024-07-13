@@ -19,6 +19,7 @@ export type DogDescription = {
   origin: string
   temperament: string
   weight: { metric: string }
+  reference_image_id: string
 }
 
 export type DogImage = {
