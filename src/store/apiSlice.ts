@@ -14,13 +14,13 @@ export const apiSlice = createApi({
       }),
       transformResponse: transformDogApiData,
     }),
-    getDogById: builder.query<DogDescription, string | undefined>({
+    getDogById: builder.query<DogDescription, number>({
       query: id => ({
         url: `/breeds/${id}`,
         headers: { "x-api-key": import.meta.env.VITE_DOG_API_KEY },
       }),
     }),
-    getDogImagesById: builder.query<DogImage[], string | undefined>({
+    getDogImagesById: builder.query<DogImage[], number>({
       query: id => ({
         url: `/images/search?limit=3&breed_ids=${id}`,
         headers: { "x-api-key": import.meta.env.VITE_DOG_API_KEY },

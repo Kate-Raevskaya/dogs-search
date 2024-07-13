@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
         element: <SignupPage />,
       },
       {
-        path: "dogs/:id",
+        path: "dogs/:idParam",
         element: <DogPage />,
       },
       {

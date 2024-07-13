@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 
+import { useToggleFavorite } from "../hooks/useToggleFavorite"
 import "./DogCard.scss"
+import { FavoriteButton } from "./FavoriteButton"
 
 type Props = {
   id: number
@@ -8,10 +10,10 @@ type Props = {
   breed: string
 }
 
-function handleSaveClick() {}
-
 export const DogCard = ({ id, url, breed }: Props) => {
   let navigate = useNavigate()
+  let { isSaved, toggleFavorite } = useToggleFavorite(id)
+
   return (
     <div className="dog-card" onClick={() => navigate(`/dogs/${id}`)}>
       <div className="dog-card-image">
@@ -19,9 +21,7 @@ export const DogCard = ({ id, url, breed }: Props) => {
       </div>
       <div className="dog-card-details">
         <h3>{breed}</h3>
-        <div className="save-button" onClick={handleSaveClick}>
-          Save&#x2764;&#xfe0f;
-        </div>
+        <FavoriteButton onClick={toggleFavorite} isSaved={isSaved} />
       </div>
     </div>
   )
