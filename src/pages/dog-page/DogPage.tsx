@@ -9,20 +9,14 @@ import {
 import "./DogPage.scss"
 
 export const DogPage = () => {
-  let { idParam } = useParams()
-
-  if (idParam === undefined) {
-    throw new Error("IdParam is missing")
-  }
+  let { idParam = "" } = useParams()
 
   let id = parseInt(idParam)
-  if (Number.isNaN(id)) {
-    throw new Error("Parameter isn't a number")
-  }
 
   let { isSaved, toggleFavorite } = useToggleFavorite(id)
 
   let { data: dog, isLoading } = useGetDogByIdQuery(id)
+  //todo show error if such id doesn't exist
   let { data: dogImages = [], isLoading: imagesIsLoading } =
     useGetDogImagesByIdQuery(id)
 
@@ -39,6 +33,10 @@ export const DogPage = () => {
       )
     })
   )
+
+  if (Number.isNaN(id)) {
+    throw new Error("Parameter isn't a number")
+  }
 
   if (!dog || isLoading) {
     return <div className="dog-card-loading">Card is loading...</div>
