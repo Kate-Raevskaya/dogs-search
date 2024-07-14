@@ -73,11 +73,11 @@ export function addNoteToHistory(email: string, historyNote: HistoryNote) {
   }
 }
 
-export function removeNoteFromHistory(email: string, historyNote: HistoryNote) {
+export function removeNoteFromHistory(email: string, id: string) {
   let userData = localStorage.getItem(email)
   if (userData) {
     let user: User = JSON.parse(userData)
-    let index = user.history.findIndex(note => note.id === historyNote.id)
+    let index = user.history.findIndex(note => note.id === id)
     user.history.splice(index, 1)
     localStorage.setItem(email, JSON.stringify(user))
   }
