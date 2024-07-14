@@ -1,0 +1,30 @@
+.history {
+  .clear-history {
+    width: fit-content;
+    border: lightsalmon 1px solid;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.history-note {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+  &:hover {
+    cursor: pointer;
+    background-color: #ffc5b0;
+  }
+
+  .note-query {
+    font-weight: bold;
+  }
+
+  .delete-note {
+    border: black 1px solid;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
