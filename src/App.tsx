@@ -1,3 +1,4 @@
+import { ErrorBoundary } from "react-error-boundary"
 import { Outlet } from "react-router-dom"
 
 import { Footer } from "./components/Footer"
@@ -7,7 +8,9 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <ErrorBoundary fallback={<div>Something went wrong...</div>}>
+        <Outlet />
+      </ErrorBoundary>
       <Footer />
     </>
   )
