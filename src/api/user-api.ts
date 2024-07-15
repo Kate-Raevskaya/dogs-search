@@ -1,7 +1,9 @@
+import type { HistoryNote } from "../types/history-types"
+
 type User = {
   password: string
   favorites: number[]
-  history: string[]
+  history: HistoryNote[]
 }
 
 export function signup(email: string, password: string) {
@@ -15,6 +17,7 @@ export function signup(email: string, password: string) {
     return true
   }
 }
+
 export function signin(email: string, password: string) {
   let user = localStorage.getItem(email)
   if (user) {
@@ -49,6 +52,42 @@ export function removeFavorite(email: string, dogId: number) {
     let user: User = JSON.parse(userData)
     let index = user.favorites.indexOf(dogId)
     user.favorites.splice(index, 1)
+    localStorage.setItem(email, JSON.stringify(user))
+  }
+}
+
+export function getAllHistoryNotes(email: string): HistoryNote[] {
+  let user = localStorage.getItem(email)
+  if (user) {
+    return JSON.parse(user).history
+  }
+  throw new Error("user isn't found")
+}
+
+export function addNoteToHistory(email: string, historyNote: HistoryNote) {
+  let userData = localStorage.getItem(email)
+  if (userData) {
+    let user: User = JSON.parse(userData)
+    user.history.push(historyNote)
+    localStorage.setItem(email, JSON.stringify(user))
+  }
+}
+
+export function removeNoteFromHistory(email: string, id: string) {
+  let userData = localStorage.getItem(email)
+  if (userData) {
+    let user: User = JSON.parse(userData)
+    let index = user.history.findIndex(note => note.id === id)
+    user.history.splice(index, 1)
+    localStorage.setItem(email, JSON.stringify(user))
+  }
+}
+
+export function clearHistoryList(email: string) {
+  let userData = localStorage.getItem(email)
+  if (userData) {
+    let user: User = JSON.parse(userData)
+    user.history = []
     localStorage.setItem(email, JSON.stringify(user))
   }
 }

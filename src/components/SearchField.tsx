@@ -2,8 +2,11 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { NavLink } from "react-router-dom"
 
+import { dateNow } from "../helpers/date-transform"
 import { useDebounce } from "../hooks/useDebounce"
 import { useGetDogsByBreedQuery } from "../store/apiSlice"
+import { addHistoryNote } from "../store/historySlice"
+import { useAppDispatch } from "../store/hooks"
 import "./SearchField.scss"
 
 type Props = {
@@ -19,12 +22,20 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
   let debouncedValue = useDebounce(inputValue, 300)
 
   let { data: suggestions = [] } = useGetDogsByBreedQuery(debouncedValue)
+  let dispatch = useAppDispatch()
 
   function handleSubmitInput(e: React.FormEvent) {
     e.preventDefault()
     if (inputValue === "") {
       return
     }
+    dispatch(
+      addHistoryNote({
+        id: crypto.randomUUID(),
+        query: inputValue,
+        timestamp: dateNow(),
+      }),
+    )
     onSubmit(inputValue)
   }
 

@@ -4,6 +4,7 @@ import App from "../App"
 import { PrivateRoute } from "../components/PrivateRoute"
 import { DogPage } from "../pages/dog-page/DogPage"
 import { FavoritesPage } from "../pages/favorites/FavoritesPage"
+import { HistoryPage } from "../pages/history/HistoryPage"
 import { Home } from "../pages/home/Home"
 import { SearchPage } from "../pages/search/SearchPage"
 import { SigninPage } from "../pages/signin/SigninPage"
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
         path: "history",
         element: (
           <PrivateRoute>
-            <p>history</p>
+            <HistoryPage />
           </PrivateRoute>
         ),
       },
