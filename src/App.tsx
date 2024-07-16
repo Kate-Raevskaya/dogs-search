@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 import { Outlet } from "react-router-dom"
 
@@ -8,9 +9,12 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <ErrorBoundary fallback={<div>Something went wrong...</div>}>
-        <Outlet />
-      </ErrorBoundary>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ErrorBoundary fallback={<div>Something went wrong...</div>}>
+          <Outlet />
+        </ErrorBoundary>
+      </Suspense>
+
       <Footer />
     </>
   )

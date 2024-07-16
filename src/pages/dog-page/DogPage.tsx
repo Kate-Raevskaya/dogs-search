@@ -8,7 +8,7 @@ import {
 } from "../../store/apiSlice"
 import "./DogPage.scss"
 
-export const DogPage = () => {
+const DogPage = () => {
   let { idParam = "" } = useParams()
 
   let id = parseInt(idParam)
@@ -79,3 +79,5 @@ export const DogPage = () => {
     </div>
   )
 }
+
+export default DogPage

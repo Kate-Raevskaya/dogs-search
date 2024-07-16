@@ -34,7 +34,7 @@ const Note = ({ historyNote }: Props) => {
   )
 }
 
-export const HistoryPage = () => {
+const HistoryPage = () => {
   let dispatch = useAppDispatch()
   let history = useAppSelector(state => state.history)
 
@@ -68,3 +68,5 @@ export const HistoryPage = () => {
     </div>
   )
 }
+
+export default HistoryPage

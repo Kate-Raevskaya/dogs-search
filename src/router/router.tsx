@@ -1,14 +1,16 @@
+import { lazy } from "react"
 import { createBrowserRouter } from "react-router-dom"
 
 import App from "../App"
-import { PrivateRoute } from "../components/PrivatRoute/PrivateRoute"
-import { DogPage } from "../pages/dog-page/DogPage"
-import { FavoritesPage } from "../pages/favorites/FavoritesPage"
-import { HistoryPage } from "../pages/history/HistoryPage"
-import { Home } from "../pages/home/Home"
-import { SearchPage } from "../pages/search/SearchPage"
-import { SigninPage } from "../pages/signin/SigninPage"
-import { SignupPage } from "../pages/singup/SignupPage"
+import { PrivateRoute } from "../components/PrivateRoute/PrivateRoute"
+
+let Home = lazy(() => import("../pages/home/Home"))
+let SignupPage = lazy(() => import("../pages/singup/SignupPage"))
+let SigninPage = lazy(() => import("../pages/signin/SigninPage"))
+let DogPage = lazy(() => import("../pages/dog-page/DogPage"))
+let SearchPage = lazy(() => import("../pages/search/SearchPage"))
+let HistoryPage = lazy(() => import("../pages/history/HistoryPage"))
+let FavoritesPage = lazy(() => import("../pages/favorites/FavoritesPage"))
 
 export const router = createBrowserRouter([
   {

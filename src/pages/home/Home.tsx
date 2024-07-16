@@ -5,7 +5,7 @@ import { SearchField } from "../../components/SearchField/SearchField"
 import { useGetAllDogsQuery } from "../../store/apiSlice"
 import "./Home.scss"
 
-export const Home = () => {
+const Home = () => {
   let { data: dogs = [], isLoading } = useGetAllDogsQuery()
   let navigate = useNavigate()
 
@@ -26,3 +26,5 @@ export const Home = () => {
     </>
   )
 }
+
+export default Home

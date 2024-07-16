@@ -4,7 +4,7 @@ import { BreedsContainer } from "../../components/BreedsContainer/BreedsContaine
 import { SearchField } from "../../components/SearchField/SearchField"
 import { useGetDogsByBreedQuery } from "../../store/apiSlice"
 
-export const SearchPage = () => {
+const SearchPage = () => {
   let [searchParams, setSearchParams] = useSearchParams()
 
   let query = searchParams.get("breed") || ""
@@ -29,3 +29,5 @@ export const SearchPage = () => {
     </div>
   )
 }
+
+export default SearchPage

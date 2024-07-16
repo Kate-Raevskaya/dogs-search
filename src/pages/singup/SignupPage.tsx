@@ -6,7 +6,7 @@ import { AuthForm } from "../../components/AuthForm/AuthForm"
 import { useAppDispatch } from "../../store/hooks"
 import { setUser } from "../../store/userSlice"
 
-export const SignupPage = () => {
+const SignupPage = () => {
   let [alreadySigned, setAlreadySigned] = useState(false)
 
   let dispatch = useAppDispatch()
@@ -38,3 +38,5 @@ export const SignupPage = () => {
     </div>
   )
 }
+
+export default SignupPage
