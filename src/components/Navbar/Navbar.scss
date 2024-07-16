@@ -12,4 +12,11 @@
     display: flex;
     align-items: center;
   }
+
+  .dark-mode {
+    border: black 1px solid;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
