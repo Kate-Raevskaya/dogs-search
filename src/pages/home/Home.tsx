@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 
-import { BreedsContainer } from "../../components/BreedsContainer"
-import { SearchField } from "../../components/SearchField"
+import { BreedsContainer } from "../../components/BreedsContainer/BreedsContainer"
+import { SearchField } from "../../components/SearchField/SearchField"
 import { useGetAllDogsQuery } from "../../store/apiSlice"
 import "./Home.scss"
 

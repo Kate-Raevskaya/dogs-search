@@ -3,12 +3,12 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { NavLink } from "react-router-dom"
 
-import { dateNow } from "../helpers/date-transform"
-import { useDebounce } from "../hooks/useDebounce"
-import { useGetDogsByBreedQuery } from "../store/apiSlice"
-import { addHistoryNote } from "../store/historySlice"
-import { useAppDispatch } from "../store/hooks"
-import { FavoriteButton } from "./FavoriteButton"
+import { dateNow } from "../../helpers/date-transform"
+import { useDebounce } from "../../hooks/useDebounce"
+import { useGetDogsByBreedQuery } from "../../store/apiSlice"
+import { addHistoryNote } from "../../store/historySlice"
+import { useAppDispatch } from "../../store/hooks"
+import { FavoriteButton } from "../Buttons/FavoriteButton"
 import "./SearchField.scss"
 
 type Props = {

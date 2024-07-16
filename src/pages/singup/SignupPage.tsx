@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { signup } from "../../api/user-api"
-import { AuthForm } from "../../components/AuthForm"
+import { AuthForm } from "../../components/AuthForm/AuthForm"
 import { useAppDispatch } from "../../store/hooks"
 import { setUser } from "../../store/userSlice"
 

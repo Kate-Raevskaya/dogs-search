@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom"
 
-import { BreedsContainer } from "../../components/BreedsContainer"
-import { SearchField } from "../../components/SearchField"
+import { BreedsContainer } from "../../components/BreedsContainer/BreedsContainer"
+import { SearchField } from "../../components/SearchField/SearchField"
 import { useGetDogsByBreedQuery } from "../../store/apiSlice"
 
 export const SearchPage = () => {

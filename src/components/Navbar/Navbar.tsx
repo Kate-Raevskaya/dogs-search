@@ -1,8 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom"
 
-import { isAuthenticated } from "../api/user-api"
-import { useAppDispatch } from "../store/hooks"
-import { removeUser } from "../store/userSlice"
+import { isAuthenticated } from "../../api/user-api"
+import { useAppDispatch } from "../../store/hooks"
+import { removeUser } from "../../store/userSlice"
 import "./Navbar.scss"
 
 export const Navbar = () => {

@@ -1,6 +1,6 @@
-import type { Dog } from "../types/dog-types"
+import type { Dog } from "../../types/dog-types"
+import { DogCard } from "../DogCard/DogCard"
 import "./BreedsContainer.scss"
-import { DogCard } from "./DogCard"
 
 type Props = {
   dogs: Dog[]

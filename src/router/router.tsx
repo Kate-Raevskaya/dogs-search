@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 
 import App from "../App"
-import { PrivateRoute } from "../components/PrivateRoute"
+import { PrivateRoute } from "../components/PrivatRoute/PrivateRoute"
 import { DogPage } from "../pages/dog-page/DogPage"
 import { FavoritesPage } from "../pages/favorites/FavoritesPage"
 import { HistoryPage } from "../pages/history/HistoryPage"

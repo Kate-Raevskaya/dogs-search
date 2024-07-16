@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 
-import { FavoriteButton } from "../../components/FavoriteButton"
+import { FavoriteButton } from "../../components/Buttons/FavoriteButton"
 import { useToggleFavorite } from "../../hooks/useToggleFavorite"
 import {
   useGetDogByIdQuery,
