@@ -1,15 +1,15 @@
 import { useContext } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 
-import { isAuthenticated } from "../../api/user-api"
 import { ThemeContext } from "../../context/ThemeContext"
+import { useIsLoggedIn } from "../../hooks/useIsLoggedIn"
 import { useAppDispatch } from "../../store/hooks"
 import { removeUser } from "../../store/userSlice"
 import "./Navbar.scss"
 
 export const Navbar = () => {
   let dispatch = useAppDispatch()
-  let isAuthed = isAuthenticated()
+  let isAuthed = useIsLoggedIn()
   let navigate = useNavigate()
   let { isDarkMode, toggleTheme } = useContext(ThemeContext)
 
