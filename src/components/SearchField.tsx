@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { NavLink } from "react-router-dom"
@@ -7,6 +8,7 @@ import { useDebounce } from "../hooks/useDebounce"
 import { useGetDogsByBreedQuery } from "../store/apiSlice"
 import { addHistoryNote } from "../store/historySlice"
 import { useAppDispatch } from "../store/hooks"
+import { FavoriteButton } from "./FavoriteButton"
 import "./SearchField.scss"
 
 type Props = {
@@ -101,4 +103,9 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
       </form>
     </div>
   )
+}
+
+SearchField.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  initialValue: PropTypes.string.isRequired,
 }
