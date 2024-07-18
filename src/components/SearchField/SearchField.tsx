@@ -8,7 +8,6 @@ import { useDebounce } from "../../hooks/useDebounce"
 import { useGetDogsByBreedQuery } from "../../store/apiSlice"
 import { addHistoryNote } from "../../store/historySlice"
 import { useAppDispatch } from "../../store/hooks"
-import { FavoriteButton } from "../Buttons/FavoriteButton"
 import "./SearchField.scss"
 
 type Props = {
@@ -23,7 +22,8 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
   let formRef = useRef<HTMLFormElement>(null)
   let debouncedValue = useDebounce(inputValue, 300)
 
-  let { data: suggestions = [] } = useGetDogsByBreedQuery(debouncedValue)
+  let { data: suggestions = [], isLoading } =
+    useGetDogsByBreedQuery(debouncedValue)
   let dispatch = useAppDispatch()
 
   function handleSubmitInput(e: React.FormEvent) {
@@ -83,7 +83,9 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
               : "suggestions"
           }
         >
-          {suggestions.length !== 0 ? (
+          {isLoading ? (
+            <p>Searching...</p>
+          ) : suggestions.length !== 0 ? (
             <div>
               <p>Found by query {debouncedValue}:</p>
               <ul>

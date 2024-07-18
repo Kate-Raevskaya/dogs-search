@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 import App from "../App"
 import { PrivateRoute } from "../components/PrivateRoute/PrivateRoute"
+import { NotFound } from "../pages/NotFound/NotFound"
 
 let Home = lazy(() => import("../pages/home/Home"))
 let SignupPage = lazy(() => import("../pages/singup/SignupPage"))
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,

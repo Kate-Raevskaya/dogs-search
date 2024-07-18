@@ -15,8 +15,7 @@ const DogPage = () => {
 
   let { isSaved, toggleFavorite } = useToggleFavorite(id)
 
-  let { data: dog, isLoading } = useGetDogByIdQuery(id)
-  //todo show error if such id doesn't exist
+  let { data: dog, isLoading, isError } = useGetDogByIdQuery(id)
   let { data: dogImages = [], isLoading: imagesIsLoading } =
     useGetDogImagesByIdQuery(id)
 
@@ -34,8 +33,8 @@ const DogPage = () => {
     })
   )
 
-  if (Number.isNaN(id)) {
-    throw new Error("Parameter isn't a number")
+  if (Number.isNaN(id) || isError) {
+    return <div className="dog-card-error">Sorry, this breed isn't found</div>
   }
 
   if (!dog || isLoading) {
