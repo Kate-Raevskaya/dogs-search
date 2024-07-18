@@ -37,4 +37,4 @@
 - [x] Используeтся TypeScript
 - [x] Настроен CI/CD
 - [x] Низкая связанность клиентского кода с хранилищем. Напрямую работа с LocalStorage происходит в отдельном [месте в приложении](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/api/user-api.ts), клиентский код не знает о типе хранилища
-- 
+- [x] Связь UI и бизнес-логики построена не через команды, а через события. Компонент AuthForm порождает [событие](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/components/AuthForm/AuthForm.tsx#L29), а страницы [SignupPage](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/pages/singup/SignupPage.tsx#L31) и [SigninPage](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/pages/signin/SigninPage.tsx#L29) реагируют на него
