@@ -1,14 +1,17 @@
+import { useContext } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 
-import { useIsLoggedIn } from "../hooks/useIsLoggedIn"
-import { useAppDispatch } from "../store/hooks"
-import { removeUser } from "../store/userSlice"
+import { ThemeContext } from "../../context/ThemeContext"
+import { useIsLoggedIn } from "../../hooks/useIsLoggedIn"
+import { useAppDispatch } from "../../store/hooks"
+import { removeUser } from "../../store/userSlice"
 import "./Navbar.scss"
 
 export const Navbar = () => {
   let dispatch = useAppDispatch()
   let isAuthed = useIsLoggedIn()
   let navigate = useNavigate()
+  let { isDarkMode, toggleTheme } = useContext(ThemeContext)
 
   function handleClickLogout() {
     dispatch(removeUser())
@@ -34,7 +37,9 @@ export const Navbar = () => {
         <NavLink to={"/"}>DogSearch</NavLink>
       </div>
       <div className="navbar-menu">
-        <p>darkmode</p>
+        <div className="dark-mode" onClick={toggleTheme}>
+          {isDarkMode ? "Light mode" : "Dark mode"}
+        </div>
         {navigation}
       </div>
     </nav>

@@ -1,8 +1,9 @@
+import PropTypes from "prop-types"
 import { useNavigate } from "react-router-dom"
 
-import { useToggleFavorite } from "../hooks/useToggleFavorite"
+import { useToggleFavorite } from "../../hooks/useToggleFavorite"
+import { FavoriteButton } from "../Buttons/FavoriteButton"
 import "./DogCard.scss"
-import { FavoriteButton } from "./FavoriteButton"
 
 type Props = {
   id: number
@@ -25,4 +26,10 @@ export const DogCard = ({ id, url, breed }: Props) => {
       </div>
     </div>
   )
+}
+
+DogCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
+  breed: PropTypes.string.isRequired,
 }

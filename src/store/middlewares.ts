@@ -8,6 +8,7 @@ import {
   getAllHistoryNotes,
   removeFavorite,
   removeNoteFromHistory,
+  signout,
 } from "../api/user-api"
 import {
   addFavoriteDog,
@@ -69,6 +70,7 @@ startAppListening({
 startAppListening({
   actionCreator: removeUser,
   effect: (action, listenerApi) => {
+    signout()
     listenerApi.dispatch(clearFavoritesDogs())
     listenerApi.dispatch(deinitializeHistory())
   },

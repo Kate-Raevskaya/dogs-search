@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import type React from "react"
 
 type Props = {
@@ -19,4 +20,9 @@ export const FavoriteButton = ({ isSaved, onClick }: Props) => {
       {isSaved ? "Delete" : `Save`}
     </div>
   )
+}
+
+FavoriteButton.propTypes = {
+  isSaved: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 }

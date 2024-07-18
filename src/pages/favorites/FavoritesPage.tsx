@@ -1,4 +1,4 @@
-import { DogCard } from "../../components/DogCard"
+import { DogCard } from "../../components/DogCard/DogCard"
 import { useGetDogByIdQuery } from "../../store/apiSlice"
 import { useAppSelector } from "../../store/hooks"
 import "./FavoritesPage.scss"
@@ -33,3 +33,5 @@ export const FavoritesPage = () => {
     </div>
   )
 }
+
+export default FavoritesPage

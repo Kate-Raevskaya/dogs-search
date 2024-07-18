@@ -2,11 +2,11 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { signin } from "../../api/user-api"
-import { AuthForm } from "../../components/AuthForm"
+import { AuthForm } from "../../components/AuthForm/AuthForm"
 import { useAppDispatch } from "../../store/hooks"
 import { setUser } from "../../store/userSlice"
 
-export const SigninPage = () => {
+const SigninPage = () => {
   let [isSigninError, setIsSigninError] = useState(false)
 
   let dispatch = useAppDispatch()
@@ -36,3 +36,5 @@ export const SigninPage = () => {
     </div>
   )
 }
+
+export default SigninPage

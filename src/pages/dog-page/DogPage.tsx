@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 
-import { FavoriteButton } from "../../components/FavoriteButton"
+import { FavoriteButton } from "../../components/Buttons/FavoriteButton"
 import { useToggleFavorite } from "../../hooks/useToggleFavorite"
 import {
   useGetDogByIdQuery,
@@ -8,15 +8,14 @@ import {
 } from "../../store/apiSlice"
 import "./DogPage.scss"
 
-export const DogPage = () => {
+const DogPage = () => {
   let { idParam = "" } = useParams()
 
   let id = parseInt(idParam)
 
   let { isSaved, toggleFavorite } = useToggleFavorite(id)
 
-  let { data: dog, isLoading } = useGetDogByIdQuery(id)
-  //todo show error if such id doesn't exist
+  let { data: dog, isLoading, isError } = useGetDogByIdQuery(id)
   let { data: dogImages = [], isLoading: imagesIsLoading } =
     useGetDogImagesByIdQuery(id)
 
@@ -34,8 +33,8 @@ export const DogPage = () => {
     })
   )
 
-  if (Number.isNaN(id)) {
-    throw new Error("Parameter isn't a number")
+  if (Number.isNaN(id) || isError) {
+    return <div className="dog-card-error">Sorry, this breed isn't found</div>
   }
 
   if (!dog || isLoading) {
@@ -79,3 +78,5 @@ export const DogPage = () => {
     </div>
   )
 }
+
+export default DogPage
