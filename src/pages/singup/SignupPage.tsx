@@ -28,7 +28,7 @@ const SignupPage = () => {
   return (
     <div className="signup-container">
       <AuthForm
-        handleForm={handleSignup}
+        onAuthorizationRequested={handleSignup}
         authHeader="Sign up"
         questionText="Already have an account?"
         questionLink="../signin"

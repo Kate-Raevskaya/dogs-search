@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom"
 import "./AuthForm.scss"
 
 type Props = {
-  handleForm: (email: string, password: string) => void
+  onAuthorizationRequested: (email: string, password: string) => void
   authHeader: string
   questionText: string
   questionLink: string
@@ -14,7 +14,7 @@ type Props = {
 }
 
 export const AuthForm = ({
-  handleForm,
+  onAuthorizationRequested,
   authHeader,
   questionText,
   questionLink,
@@ -26,7 +26,7 @@ export const AuthForm = ({
 
   function handleSubmitForm(e: React.FormEvent) {
     e.preventDefault()
-    handleForm(email, password)
+    onAuthorizationRequested(email, password)
   }
 
   return (
