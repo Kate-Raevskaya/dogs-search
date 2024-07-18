@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 import { Outlet } from "react-router-dom"
 
@@ -9,6 +9,7 @@ import { useAppDispatch } from "./store/hooks"
 import { setUser } from "./store/userSlice"
 
 const App = () => {
+  let [loading, setLoading] = useState<boolean>(true)
   let dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -16,8 +17,13 @@ const App = () => {
 
     if (userEmail) {
       dispatch(setUser({ email: userEmail }))
+      setLoading(false)
     }
   }, [dispatch])
+
+  if (loading) {
+    return <div className="app-loading">Loading...</div>
+  }
 
   return (
     <>
