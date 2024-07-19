@@ -17,8 +17,8 @@ const App = () => {
 
     if (userEmail) {
       dispatch(setUser({ email: userEmail }))
-      setLoading(false)
     }
+    setLoading(false)
   }, [dispatch])
 
   if (loading) {
