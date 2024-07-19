@@ -1,16 +1,40 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #ffc5b0;
+  background-color: #ffffff;
+  border-radius: 20px;
+  height: 78px;
+  width: 1200px;
+  position: sticky;
+  top: 0;
+  margin-top: 30px;
+
+  .navlink {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+  }
 
   .navbar-brand {
     display: flex;
     align-items: center;
+    gap: 15px;
+    padding-left: 15px;
   }
 
   .navbar-menu {
     display: flex;
     align-items: center;
+    gap: 15px;
+    padding-right: 15px;
+
+    .logout-button {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   .dark-mode {
