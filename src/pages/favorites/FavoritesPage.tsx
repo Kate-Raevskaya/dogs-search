@@ -1,16 +1,18 @@
 import { DogCard } from "../../components/DogCard/DogCard"
+import dogIcon from "../../icons/dog-not-found.svg"
 import { useGetDogByIdQuery } from "../../store/apiSlice"
 import { useAppSelector } from "../../store/hooks"
 import { getFavorites } from "../../store/selectors"
 import "./FavoritesPage.scss"
 
 const Dog = ({ id }: { id: number }) => {
-  let { data: dog } = useGetDogByIdQuery(id)
+  let { data: dog, isLoading } = useGetDogByIdQuery(id)
   return (
     <div>
-      {dog ? (
+      {isLoading ? (
+        <DogCard id={id} url={dogIcon} breed="Loading..." />
+      ) : dog ? (
         <DogCard
-          key={dog.id}
           id={dog.id}
           url={`https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`}
           breed={dog.name}
