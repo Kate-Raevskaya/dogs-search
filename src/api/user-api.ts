@@ -20,6 +20,7 @@ export function signup(email: string, password: string) {
       usersData[email] = { password, favorites: [], history: [] }
       localStorage.setItem("users", JSON.stringify(usersData))
       localStorage.setItem("currentUser", email)
+      return true
     }
   }
   localStorage.setItem(
@@ -33,10 +34,13 @@ export function signup(email: string, password: string) {
 export function signin(email: string, password: string) {
   let users = localStorage.getItem("users")
   if (users) {
-    let userPassword: string = JSON.parse(users)[email].password
-    if (userPassword === password) {
-      localStorage.setItem("currentUser", email)
-      return true
+    let usersEmail = JSON.parse(users)[email]
+    if (usersEmail) {
+      let userPassword: string = usersEmail.password
+      if (userPassword === password) {
+        localStorage.setItem("currentUser", email)
+        return true
+      }
     }
   }
   return false
