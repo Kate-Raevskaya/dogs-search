@@ -21,29 +21,18 @@ const DogPage = () => {
 
   let navigate = useNavigate()
 
-  let images = imagesIsLoading ? (
-    <div className="dog-image-loading">Images are loading...</div>
-  ) : (
-    dogImages.map(image => {
-      return (
-        <div key={image.id} className="dog-image">
-          <img alt="dog" src={image.url}></img>
-        </div>
-      )
-    })
-  )
-
   if (Number.isNaN(id) || isError) {
-    return <div className="dog-card-error">Sorry, this breed isn't found</div>
+    return <div className="loading">Sorry, this breed isn't found</div>
   }
 
   if (!dog || isLoading) {
-    return <div className="dog-card-loading">Card is loading...</div>
+    return <div className="loading">Card is loading...</div>
   }
 
   return (
     <div className="dog-page-container">
       <button
+        className="go-back-button"
         onClick={() => {
           navigate("/")
         }}
@@ -51,29 +40,51 @@ const DogPage = () => {
         Go back
       </button>
       <div className="dog-full-card">
-        <div className="dog-images-container">{images}</div>
         <div className="dog-full-description">
-          <h2 className="breed-name">{dog.name}</h2>
-          <p className="breed-description">
-            <b>Origin:</b> {dog.origin}
-          </p>
-          <p className="breed-description">
-            <b>Height:</b> {dog.height.metric} cm
-          </p>
-          <p className="breed-description">
-            <b>Weight:</b> {dog.weight.metric} cm
-          </p>
-          <p className="breed-description">
-            <b>Life:</b> {dog.life_span} age
-          </p>
-          <p className="breed-description">
-            <b>Breed for:</b> {dog.bred_for}
-          </p>
-          <p className="breed-description">
-            <b>Temperament:</b> {dog.temperament}
-          </p>
+          <div className="breed">
+            <h2 className="breed-name">{dog.name}</h2>
+            <FavoriteButton onClick={toggleFavorite} isSaved={isSaved} />
+          </div>
+          <div className="description">
+            <p className="breed-description">
+              <b>Origin:</b> {dog.origin}
+            </p>
+            <p className="breed-description">
+              <b>Height:</b> {dog.height.metric} cm
+            </p>
+            <p className="breed-description">
+              <b>Weight:</b> {dog.weight.metric} cm
+            </p>
+            <p className="breed-description">
+              <b>Life:</b> {dog.life_span} age
+            </p>
+            <p className="breed-description">
+              <b>Breed for:</b> {dog.bred_for}
+            </p>
+            <p className="breed-description">
+              <b>Temperament:</b> {dog.temperament}
+            </p>
+          </div>
         </div>
-        <FavoriteButton onClick={toggleFavorite} isSaved={isSaved} />
+        <div className="dog-main-image">
+          <img
+            src={`https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`}
+            alt="dog"
+          />
+        </div>
+      </div>
+      <div className="dog-images-container">
+        {imagesIsLoading ? (
+          <div className="loading">Images are loading...</div>
+        ) : (
+          dogImages.map(image => {
+            return (
+              <div key={image.id} className="dog-image">
+                <img alt="dog" src={image.url}></img>
+              </div>
+            )
+          })
+        )}
       </div>
     </div>
   )

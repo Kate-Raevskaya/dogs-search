@@ -26,9 +26,13 @@ export const FavoritesPage = () => {
     <div className="favorites">
       <h2 className="favorites-header">Favorites</h2>
       <div className="favorites-container">
-        {dogsId.map(id => {
-          return <Dog key={id} id={id} />
-        })}
+        {dogsId.length === 0 ? (
+          <p>You don't have favorites yet</p>
+        ) : (
+          dogsId.map(id => {
+            return <Dog key={id} id={id} />
+          })
+        )}
       </div>
     </div>
   )

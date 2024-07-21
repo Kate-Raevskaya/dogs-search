@@ -2,6 +2,7 @@ import type React from "react"
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
 
+import paw from "../../icons/paw-white.svg"
 import "./AuthForm.scss"
 
 type Props = {
@@ -31,37 +32,39 @@ export const AuthForm = ({
 
   return (
     <div className="auth-form-container">
-      <h2>{authHeader}</h2>
-      <p>Enter your email and password</p>
-      <form onSubmit={handleSubmitForm} className="auth-form">
-        <label>
-          <input
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            type="email"
-            required
-          />
-          Email
-        </label>
-        <label>
-          <input
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            type="password"
-            minLength={8}
-            required
-          />
-          Password
-        </label>
-        <button className="auth-button" type="submit">
-          {authHeader}
-        </button>
-      </form>
-      {authError ? <p className="auth-error">{authError}</p> : null}
-      <p>
-        {questionText}
-        <NavLink to={questionLink}>{questionTextLink}</NavLink>
-      </p>
+      <h2 className="header">{authHeader}</h2>
+      <div className="auth-form">
+        <form onSubmit={handleSubmitForm} className="form">
+          <label>
+            <p>Email</p>
+            <input
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              type="email"
+              required
+            />
+          </label>
+          <label>
+            <p>Password</p>
+            <input
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              type="password"
+              minLength={8}
+              required
+            />
+          </label>
+          <button className="auth-button" type="submit">
+            {authHeader}
+            <img src={paw} className="paw" alt="paw"></img>
+          </button>
+          {authError ? <p className="auth-error">{authError}</p> : null}
+          <p className="question">
+            {questionText}
+            <NavLink to={questionLink}>{questionTextLink}</NavLink>
+          </p>
+        </form>
+      </div>
     </div>
   )
 }

@@ -3,6 +3,9 @@ import { NavLink, useNavigate } from "react-router-dom"
 
 import { ThemeContext } from "../../context/ThemeContext"
 import { useIsLoggedIn } from "../../hooks/useIsLoggedIn"
+import moon from "../../icons/moon.svg"
+import paw from "../../icons/paw.svg"
+import sun from "../../icons/sun.svg"
 import { useAppDispatch } from "../../store/hooks"
 import { removeUser } from "../../store/userSlice"
 import "./Navbar.scss"
@@ -26,7 +29,7 @@ export const Navbar = () => {
       <NavLink className="navlink" to={"history"}>
         History
       </NavLink>
-      <div className="logout-button" onClick={handleClickLogout}>
+      <div className="navlink logout-button" onClick={handleClickLogout}>
         Logout
       </div>
     </>
@@ -43,14 +46,14 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <p>icon</p>
         <NavLink className="navlink" to={"/"}>
+          <img src={paw} alt="logo" />
           DogSearch
         </NavLink>
       </div>
       <div className="navbar-menu">
         <div className="dark-mode" onClick={toggleTheme}>
-          {isDarkMode ? "Light mode" : "Dark mode"}
+          <img src={isDarkMode ? sun : moon} alt="theme" />
         </div>
         {navigation}
       </div>

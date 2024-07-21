@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom"
 import { BreedsContainer } from "../../components/BreedsContainer/BreedsContainer"
 import { SearchField } from "../../components/SearchField/SearchField"
 import { useGetDogsByBreedQuery } from "../../store/apiSlice"
+import "./SearchPage.scss"
 
 const SearchPage = () => {
   let [searchParams, setSearchParams] = useSearchParams()
@@ -16,15 +17,17 @@ const SearchPage = () => {
   }
 
   return (
-    <div className="search-page-container">
+    <div className="search-page">
+      <p className="search-page-header">Found by query {query}</p>
       <SearchField onSubmit={handleSubmit} initialValue={query} />
-      <p>Found by query {query}</p>
       {isLoading ? (
-        <>Loading...</>
+        <p className="loading">Loading...</p>
       ) : dogs.length !== 0 ? (
-        <BreedsContainer dogs={dogs} />
+        <div className="found-breeds">
+          <BreedsContainer dogs={dogs} />
+        </div>
       ) : (
-        <p>{query} not found :(</p>
+        <p className="not-found-message">{query} not found :(</p>
       )}
     </div>
   )
