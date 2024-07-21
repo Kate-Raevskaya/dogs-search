@@ -1,8 +1,96 @@
-.auth-form {
-  display: flex;
-  flex-direction: column;
+.auth-form-container {
+  font-size: 20px;
+  font-weight: 500;
 
-  .auth-button {
-    width: fit-content;
+  .header {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 57.6px;
+    margin: 24px 0;
+  }
+
+  .auth-form {
+    display: flex;
+    justify-content: center;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 15px;
+      width: 500px;
+      background-color: white;
+      border-radius: 20px;
+      border: 1px solid #d9d9d9;
+      padding: 20px;
+
+      label {
+        display: flex;
+        flex-direction: row;
+        p {
+          width: 100px;
+        }
+        input {
+          width: 300px;
+          border-radius: 20px;
+          border: 1px solid #d9d9d9;
+          font-size: 17px;
+          font-weight: 500;
+          padding: 5px 12px;
+
+          &:focus {
+            outline-color: #e7744e;
+          }
+        }
+      }
+      .auth-button {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        position: relative;
+        border: none;
+        background-color: #e7744e;
+
+        font-size: 20px;
+        font-weight: 500;
+        border-radius: 20px;
+        padding: 3px 15px;
+        color: white;
+        transition: padding-right ease 0.2s;
+
+        .paw {
+          position: absolute;
+          right: 0;
+          opacity: 0;
+          transition:
+            opacity ease 0.2s,
+            right ease 0.2s;
+        }
+
+        &:hover {
+          cursor: pointer;
+          padding-right: 40px;
+          .paw {
+            opacity: 1;
+            right: 5px;
+            color: white;
+          }
+        }
+      }
+
+      .auth-error {
+        align-self: center;
+        color: #e7744e;
+      }
+
+      .question {
+        align-self: center;
+
+        a {
+          color: #e7744e;
+          margin-left: 10px;
+        }
+      }
+    }
   }
 }

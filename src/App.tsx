@@ -3,7 +3,6 @@ import { ErrorBoundary } from "react-error-boundary"
 import { Outlet } from "react-router-dom"
 
 import { isAuthenticated } from "./api/user-api"
-import { Footer } from "./components/Footer/Footer"
 import { Navbar } from "./components/Navbar/Navbar"
 import { useAppDispatch } from "./store/hooks"
 import { setUser } from "./store/userSlice"
@@ -28,13 +27,11 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className="loading">Loading...</div>}>
         <ErrorBoundary fallback={<div>Something went wrong...</div>}>
           <Outlet />
         </ErrorBoundary>
       </Suspense>
-
-      <Footer />
     </>
   )
 }

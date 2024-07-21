@@ -1,35 +1,88 @@
 .dog-page-container {
-  .dog-full-card {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    margin: auto;
-
-    border: lightsalmon 3px solid;
-
-    .dog-images-container {
-      display: flex;
-    }
-
-    .dog-image {
-      height: 270px;
-      width: 330px;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  .save-button {
-    border: lightsalmon 2px solid;
-    width: fit-content;
-    margin: auto;
-    font-size: 25px;
+  .go-back-button {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0;
+    color: #e7744e;
+    border-radius: 15px;
 
     &:hover {
       cursor: pointer;
-      background-color: lightsalmon;
+      background-color: white;
+    }
+  }
+  .dog-full-card {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+
+    .dog-full-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-shrink: 1;
+      gap: 20px;
+      width: 50%;
+      border-radius: 20px;
+      padding: 50px 20px;
+
+      background-color: #e7744e;
+      color: white;
+
+      font-size: 20px;
+
+      .breed {
+        display: flex;
+        margin-bottom: 50px;
+        h2 {
+          margin-right: 10px;
+        }
+        .save-button {
+          &.saved {
+            svg {
+              color: red;
+            }
+          }
+        }
+      }
+      .description {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    .dog-main-image {
+      width: 540px;
+      height: 540px;
+      flex-shrink: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+    }
+  }
+  .dog-images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 350px);
+    justify-content: space-around;
+    grid-gap: 20px;
+    margin-top: 20px;
+    .dog-image {
+      height: 302px;
+      width: 100%;
+      background-color: #e3e3e3;
+      border-radius: 10px;
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+      }
     }
   }
 }

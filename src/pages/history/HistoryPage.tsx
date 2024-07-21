@@ -45,26 +45,28 @@ const HistoryPage = () => {
   return (
     <div className="history">
       <h2 className="history-header">History</h2>
-      {history.length === 0 ? (
-        <p>You don't have a history yet</p>
-      ) : (
-        <>
-          <div className="clear-history" onClick={handleDelete}>
-            Delete all
-          </div>
-          <div className="history-container">
-            <ul className="history-list">
-              {history.map(historyNote => {
-                return (
-                  <li key={historyNote.id}>
-                    <Note historyNote={historyNote} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </>
-      )}
+      <div className="history-content">
+        {history.length === 0 ? (
+          <p>You don't have a history yet</p>
+        ) : (
+          <>
+            <div className="clear-history" onClick={handleDelete}>
+              Delete all
+            </div>
+            <div className="history-container">
+              <ul className="history-list">
+                {history.map(historyNote => {
+                  return (
+                    <li key={historyNote.id}>
+                      <Note historyNote={historyNote} />
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }

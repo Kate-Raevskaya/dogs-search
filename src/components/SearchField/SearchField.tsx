@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom"
 
 import { dateNow } from "../../helpers/date-transform"
 import { useDebounce } from "../../hooks/useDebounce"
+import searchIcon from "../../icons/search.svg"
 import { useGetDogsByBreedQuery } from "../../store/apiSlice"
 import { addHistoryNote } from "../../store/historySlice"
 import { useAppDispatch } from "../../store/hooks"
@@ -31,6 +32,7 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
     if (inputValue === "") {
       return
     }
+    setFocus(false)
     dispatch(
       addHistoryNote({
         id: crypto.randomUUID(),
@@ -70,39 +72,41 @@ export const SearchField = ({ onSubmit, initialValue }: Props) => {
       <form className="search-form" onSubmit={handleSubmitInput} ref={formRef}>
         <input
           type="text"
-          placeholder="Enter a breed"
+          placeholder="Search Breed"
           value={inputValue}
           onChange={handleOnChangeInput}
           onFocus={handleOnFocusInput}
         />
-        <button type="submit">Search</button>
-        <div
-          className={
-            focus && debouncedValue !== ""
-              ? "suggestions suggestions-focus"
-              : "suggestions"
-          }
-        >
-          {isLoading ? (
-            <p>Searching...</p>
-          ) : suggestions.length !== 0 ? (
-            <div>
-              <p>Found by query {debouncedValue}:</p>
-              <ul>
-                {suggestions.map(s => {
-                  return (
-                    <li key={s.id}>
-                      <NavLink to={`../dogs/${s.id}`}>{s.breed}</NavLink>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          ) : (
-            <p>Nothing found :(</p>
-          )}
-        </div>
+        <button type="submit" className="search-button">
+          <img src={searchIcon} alt="search" />
+        </button>
       </form>
+      <div
+        className={
+          focus && debouncedValue !== ""
+            ? "suggestions suggestions-focus"
+            : "suggestions"
+        }
+      >
+        {isLoading ? (
+          <p>Searching...</p>
+        ) : suggestions.length !== 0 ? (
+          <div>
+            <p>Found by query {debouncedValue}:</p>
+            <ul>
+              {suggestions.map(s => {
+                return (
+                  <li key={s.id}>
+                    <NavLink to={`../dogs/${s.id}`}>{s.breed}</NavLink>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ) : (
+          <p>Nothing found :(</p>
+        )}
+      </div>
     </div>
   )
 }

@@ -27,7 +27,9 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ThemeContext.Provider value={themeValue}>
-      <main className={isDarkMode ? "dark" : ""}>{children}</main>
+      <main className={isDarkMode ? "dark" : ""}>
+        <div className="main-container">{children}</div>
+      </main>
     </ThemeContext.Provider>
   )
 }

@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 import App from "../App"
 import { PrivateRoute } from "../components/PrivateRoute/PrivateRoute"
+import { ScrollToTop } from "../components/ScrollToTop/ScrollToTop"
 import { NotFound } from "../pages/NotFound/NotFound"
 
 let Home = lazy(() => import("../pages/home/Home"))
@@ -16,7 +17,12 @@ let FavoritesPage = lazy(() => import("../pages/favorites/FavoritesPage"))
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <>
+        <ScrollToTop />
+        <App />
+      </>
+    ),
     errorElement: <NotFound />,
     children: [
       {
