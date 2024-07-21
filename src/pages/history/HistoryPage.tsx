@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 import { clearHistory, removeHistoryNote } from "../../store/historySlice"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
+import { getHistory } from "../../store/selectors"
 import type { HistoryNote } from "../../types/history-types"
 import "./HistoryPage.scss"
 
@@ -36,7 +37,7 @@ const Note = ({ historyNote }: Props) => {
 
 const HistoryPage = () => {
   let dispatch = useAppDispatch()
-  let history = useAppSelector(state => state.history)
+  let history = useAppSelector(getHistory)
 
   function handleDelete() {
     dispatch(clearHistory())

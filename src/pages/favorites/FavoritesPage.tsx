@@ -1,6 +1,7 @@
 import { DogCard } from "../../components/DogCard/DogCard"
 import { useGetDogByIdQuery } from "../../store/apiSlice"
 import { useAppSelector } from "../../store/hooks"
+import { getFavorites } from "../../store/selectors"
 import "./FavoritesPage.scss"
 
 const Dog = ({ id }: { id: number }) => {
@@ -20,7 +21,7 @@ const Dog = ({ id }: { id: number }) => {
 }
 
 export const FavoritesPage = () => {
-  let dogsId = useAppSelector(state => state.favorites)
+  let dogsId = useAppSelector(getFavorites)
 
   return (
     <div className="favorites">
