@@ -3,7 +3,7 @@
 ![example workflow](https://github.com/Kate-Raevskaya/aston-react/actions/workflows/workflow.yml/badge.svg)
 
 - Приложение для поиска пород собак
-- [Посмотреть проект](https://aston-react-rosy.vercel.app/)
+- [Посмотреть проект](https://dogs-search-rosy.vercel.app/)
 - Используемое API [Dog API](https://thedogapi.com/?utm_source=thecatapi&utm_medium=website&utm_campaign=x-pollination)
 
 ## Реализованы следующие требования к функциональности:
