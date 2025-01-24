@@ -6,11 +6,6 @@
 - [Посмотреть проект](https://dogs-search-rosy.vercel.app/)
 - Используемое API [Dog API](https://thedogapi.com/?utm_source=thecatapi&utm_medium=website&utm_campaign=x-pollination)
 
-## Реализованы следующие требования к функциональности:
-
-- [x] Реализованы Требования к функциональности
-- [x] Для хранения учетных записей пользователей, их Избранного и Истории поиска, используется LocalStorage
-
 #### React
 
 - [x] Пишем функциональные компоненты с хуками в приоритете над классовыми
@@ -32,9 +27,10 @@
 - [x] Используется [RTK Query](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/store/apiSlice.ts)
 - [x] Используется [Transforming Responses](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/store/apiSlice.ts)
 
-### 2 уровень (необязательный)
+### Также
 
 - [x] Используeтся TypeScript
 - [x] Настроен CI/CD
+- [x] Для хранения учетных записей пользователей, их Избранного и Истории поиска, используется LocalStorage
 - [x] Низкая связанность клиентского кода с хранилищем. Напрямую работа с LocalStorage происходит в отдельном [месте в приложении](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/api/user-api.ts), клиентский код не знает о типе хранилища
 - [x] Связь UI и бизнес-логики построена не через команды, а через события. Компонент AuthForm порождает [событие](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/components/AuthForm/AuthForm.tsx#L30), а страницы [SignupPage](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/pages/singup/SignupPage.tsx#L31) и [SigninPage](https://github.com/Kate-Raevskaya/aston-react/blob/main/src/pages/signin/SigninPage.tsx#L29) реагируют на него
